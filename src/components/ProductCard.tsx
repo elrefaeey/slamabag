@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Product } from '@/data/products';
@@ -36,6 +37,7 @@ export const ProductCard = ({ product, offer, onNavigateToCart }: ProductCardPro
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
+  const navigate = useNavigate();
 
   const handleAddToCart = (e?: React.MouseEvent) => {
     e?.stopPropagation();
@@ -52,7 +54,7 @@ export const ProductCard = ({ product, offer, onNavigateToCart }: ProductCardPro
   };
 
   const handleCardClick = () => {
-    setIsModalOpen(true);
+    navigate(`/products/${product.id}`);
   };
 
   const isOnSale = !!product.originalPrice || !!offer;
@@ -167,14 +169,7 @@ export const ProductCard = ({ product, offer, onNavigateToCart }: ProductCardPro
       </div>
     </div>
 
-    <ProductDetailsModal
-      product={product}
-      offer={offer}
-      isOpen={isModalOpen}
-      onClose={() => setIsModalOpen(false)}
-      onNavigateToCart={onNavigateToCart}
-      initialColorName={selectedColor?.name}
-    />
+    {/* Modal no longer used when navigating to dedicated page */}
   </>
   );
 };

@@ -1,6 +1,7 @@
 import { 
   collection, 
   doc, 
+  getDoc,
   getDocs, 
   addDoc, 
   updateDoc, 
@@ -85,6 +86,36 @@ export const getFeaturedProducts = async (): Promise<Product[]> => {
       return [];
     }
   }
+};
+
+// Get a single product by id
+export const getProductById = async (productId: string): Promise<Product | null> => {
+  try {
+    const productRef = doc(db, PRODUCTS_COLLECTION, productId);
+    const snapshot = await getDoc(productRef);
+    if (!snapshot.exists()) return null;
+    return { id: snapshot.id, ...(snapshot.data() as Product) };
+  } catch (error) {
+    console.error('Error fetching product by id:', error);
+    throw new Error('Failed to fetch product');
+  }
+};
+
+// Subscribe to a single product by id
+export const subscribeToProduct = (
+  productId: string,
+  callback: (product: Product | null) => void
+) => {
+  const productRef = doc(db, PRODUCTS_COLLECTION, productId);
+  return onSnapshot(productRef, (snapshot) => {
+    if (!snapshot.exists()) {
+      callback(null);
+      return;
+    }
+    callback({ id: snapshot.id, ...(snapshot.data() as Product) });
+  }, (error) => {
+    console.error('Error listening to product:', error);
+  });
 };
 
 // Add a new product
