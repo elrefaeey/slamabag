@@ -1,0 +1,373 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbars cross-browser */
+.no-scrollbar {
+  /* Firefox */
+  scrollbar-width: none;
+  /* IE 10+ */
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Edge */
+}
+
+/* Product Details Modal Animation */
+@keyframes slide-up {
+  from {
+    transform: translateY(100%) scale(1);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%) scale(1);
+    opacity: 0.4;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.28s ease-out;
+  will-change: transform, opacity;
+}
+
+.animate-slide-down {
+  animation: slide-down 0.25s ease-in;
+  will-change: transform, opacity;
+}
+
+/* Modal responsive improvements */
+@media (max-width: 640px) {
+  .modal-mobile {
+    max-width: calc(100vw - 1rem);
+    max-height: calc(100vh - 1rem);
+    margin: 0.5rem;
+  }
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  /* Ensure text is readable on mobile */
+  body {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  /* Improve button touch targets */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better spacing for mobile */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Improve form inputs on mobile */
+  input, textarea, select {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 12px;
+  }
+  
+  /* Better card spacing on mobile */
+  .card-mobile {
+    margin: 0.5rem;
+    padding: 1rem;
+  }
+  
+  /* Improve table responsiveness */
+  .table-mobile {
+    font-size: 12px;
+  }
+  
+  .table-mobile th,
+  .table-mobile td {
+    padding: 8px 4px;
+  }
+  
+  /* Homepage category buttons mobile optimization */
+  .category-button-mobile {
+    min-height: 44px;
+    padding: 12px 8px;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+  
+  .category-button-mobile .badge {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+}
+
+/* MY Bag E-commerce Design System - Luxury Fashion Theme */
+
+@layer base {
+  :root {
+    /* Light & Clean Design - White-based Theme */
+    --background: 0 0% 100%; /* White (#FFFFFF) */
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%; /* White (#FFFFFF) */
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%; /* White (#FFFFFF) */
+    --popover-foreground: 0 0% 0%;
+
+    /* Primary - Brand color #374957 */
+    --primary: 206 23% 28%; /* #374957 */
+    --primary-foreground: 0 0% 100%; /* White */
+
+    /* Secondary - Soft Background (#FAF9EE) */
+    --secondary: 45 33% 96%; /* #FAF9EE */
+    --secondary-foreground: 0 0% 20%;
+
+    /* Muted - Input Background (#EEEEEE) */
+    --muted: 0 0% 93%; /* #EEEEEE */
+    --muted-foreground: 0 0% 45%;
+
+    /* Accent - Green Accent (#A2AF9B) */
+    --accent: 85 12% 66%; /* #A2AF9B */
+    --accent-foreground: 0 0% 0%;
+
+    /* Clean Color Palette */
+    --clean-secondary: 45 33% 96%; /* #FAF9EE - Secondary background */
+    --clean-accent: 85 12% 66%; /* #A2AF9B - Accent color */
+    --clean-neutral: 30 14% 82%; /* #DCCFC0 - Neutral borders */
+    --clean-input: 0 0% 93%; /* #EEEEEE - Input backgrounds */
+
+    /* Special Offers Colors */
+    --offer-red: 0 100% 50%; /* #FF0000 - Red for offers */
+    --offer-blue: 211 100% 50%; /* #007BFF - Blue for offers */
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* UI Elements */
+    --border: 30 14% 82%; /* #DCCFC0 - Neutral borders */
+    --input: 0 0% 93%; /* #EEEEEE - Input backgrounds */
+    --ring: 85 12% 66%; /* #A2AF9B - Focus rings */
+
+    /* Clean Gradients */
+    --gradient-accent: linear-gradient(135deg, hsl(85 12% 66%), hsl(85 12% 76%)); /* #A2AF9B gradient */
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 0% / 0.7), hsl(0 0% 0% / 0.4));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(45 33% 96%)); /* White to #FAF9EE */
+
+    /* Soft Shadows for Clean Design */
+    --shadow-soft: 0 2px 10px hsl(0 0% 0% / 0.05);
+    --shadow-medium: 0 4px 20px hsl(0 0% 0% / 0.08);
+    --shadow-strong: 0 8px 30px hsl(0 0% 0% / 0.12);
+    --shadow-accent: 0 4px 15px hsl(85 12% 66% / 0.2);
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Spacing */
+    --radius: 0.5rem;
+    --section-padding: 5rem 0;
+
+    /* Sidebar - Clean Design */
+    --sidebar-background: 45 33% 96%; /* #FAF9EE */
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 0 0% 0%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 85 12% 66%; /* #A2AF9B */
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 30 14% 82%; /* #DCCFC0 */
+    --sidebar-ring: 85 12% 66%; /* #A2AF9B */
+  }
+
+  .dark {
+    /* Dark mode maintains the same luxury feel with inverted colors */
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+    --border: 0 0% 15%;
+    --input: 0 0% 12%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    /* Global font: Cinzel (primary), IBM Plex Sans Arabic (fallback for Arabic) */
+    font-family: 'Cinzel', 'IBM Plex Sans Arabic', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans Arabic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight uppercase;
+    font-family: 'Cinzel', 'IBM Plex Sans Arabic', inherit;
+    font-weight: 800; /* strong elegant headings */
+    letter-spacing: 0.02em;
+  }
+
+  /* Buttons and logo: uppercase + bold Cinzel */
+  button, .app-logo, .btn, .btn-gold, .btn-accent, .btn-elegant {
+    font-family: 'Cinzel', 'IBM Plex Sans Arabic', inherit;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
+  /* Body text: Cinzel regular for readability */
+  p, span, div, input, textarea, label, a, li, td, th {
+    font-family: 'Cinzel', 'IBM Plex Sans Arabic', inherit;
+    font-weight: 400;
+    text-transform: none;
+  }
+
+  /* Mono override to keep typography cohesive */
+  .font-mono {
+    font-family: 'Cinzel', 'IBM Plex Sans Arabic', inherit;
+    font-weight: 400;
+  }
+}
+
+@layer components {
+  /* Clean Button Variants */
+  .btn-accent {
+    @apply text-white font-semibold px-8 py-3 rounded-lg font-serif;
+    @apply transition-all duration-300 hover:shadow-lg hover:scale-105;
+    background-color: #374957; /* brand */
+    border: 1px solid #374957;
+    color: #ffffff;
+  }
+
+  .btn-accent:hover {
+    background-color: #374957;
+    box-shadow: 0 8px 25px rgba(55, 73, 87, 0.3);
+  }
+
+  .btn-outline-accent {
+    @apply border-2 font-semibold px-8 py-3 rounded-lg transition-all duration-300 font-serif;
+    border-color: #8B4513;
+    color: #8B4513;
+    background: transparent;
+  }
+
+  .btn-outline-accent:hover {
+    background: linear-gradient(135deg, #8B4513, #A0522D);
+    color: white;
+    border-color: #8B4513;
+  }
+
+  /* Elegant Button - Premium styling */
+  .btn-gold {
+    @apply text-white font-semibold px-8 py-3 rounded-lg font-serif;
+    @apply transition-all duration-300 hover:shadow-lg hover:scale-105;
+    background-color: #374957; /* brand */
+    border: 1px solid #374957;
+    color: #ffffff;
+  }
+
+  .btn-gold:hover {
+    background-color: #374957;
+    box-shadow: 0 8px 25px rgba(55, 73, 87, 0.3);
+  }
+
+  .btn-gold:disabled {
+    background: #CCCCCC;
+    color: #666666;
+    border-color: #CCCCCC;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Alternative elegant button style */
+  .btn-elegant {
+    @apply text-white font-semibold px-8 py-3 rounded-lg font-serif;
+    @apply transition-all duration-300 hover:shadow-lg hover:scale-105;
+    background: linear-gradient(135deg, #8B4513, #A0522D);
+    border: 1px solid #8B4513;
+  }
+
+  .btn-elegant:hover {
+    background: linear-gradient(135deg, #A0522D, #CD853F);
+    box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+  }
+
+  /* Admin: Card container with subtle border and hover */
+  .card-admin {
+    @apply bg-white rounded-2xl border border-clean-neutral/70 shadow-soft;
+  }
+
+  /* Admin: gradient outline button for ghost/outline actions */
+  .btn-gradient-outline {
+    @apply h-11 rounded-full px-5 transition duration-300;
+    @apply border border-clean-neutral text-foreground bg-white;
+  }
+  .btn-gradient-outline:hover {
+    box-shadow: var(--shadow-accent);
+    outline: none;
+    border-color: hsl(var(--accent));
+  }
+
+  /* RTL helpers for affixes like % symbol in inputs */
+  .affix-end { right: 0.75rem; }
+  [dir="rtl"] .affix-end { right: auto; left: 0.75rem; }
+
+  /* Clean Product Cards */
+  .product-card {
+    @apply bg-white rounded-xl overflow-hidden;
+    @apply transition-all duration-300 hover:shadow-medium hover:-translate-y-1;
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .hero-overlay {
+    background: var(--gradient-hero);
+  }
+
+  /* Clean Section Backgrounds */
+  .section-secondary {
+    background: hsl(var(--clean-secondary));
+  }
+
+  /* Text Gradients */
+  .text-gradient-accent {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+  }
+}

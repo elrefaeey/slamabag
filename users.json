@@ -1,0 +1,12 @@
+{"users": [
+{
+  "localId": "MPWK1ZliNEPufqwQG5760MYIduE2",
+  "email": "salma@admin.com",
+  "emailVerified": false,
+  "passwordHash": "RgjjeBSEylb68sb2Odk0vS15mewQpzFEH9sEl4lkc/vwD1X15DgXlG0YMSeXfJ77wq7H4cESlNGKwLa/6PmSpA==",
+  "salt": "+qBAfjyxfS/+Ow==",
+  "lastSignedInAt": "1756420978919",
+  "createdAt": "1755950712645",
+  "disabled": false,
+  "providerUserInfo": []
+}]}

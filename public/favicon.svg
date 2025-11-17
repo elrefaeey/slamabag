@@ -1,0 +1,25 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Clean background with brand color -->
+  <rect width="32" height="32" fill="#A2AF9B" rx="4"/>
+
+  <!-- White background circle for better text contrast -->
+  <circle cx="16" cy="16" r="14" fill="white" opacity="0.95"/>
+
+  <!-- MY text - optimized for readability -->
+  <text x="16" y="14"
+        font-family="Arial, sans-serif"
+        font-size="7"
+        font-weight="900"
+        text-anchor="middle"
+        fill="#A2AF9B"
+        letter-spacing="0.5px">MY</text>
+
+  <!-- BAG text -->
+  <text x="16" y="22"
+        font-family="Arial, sans-serif"
+        font-size="6"
+        font-weight="900"
+        text-anchor="middle"
+        fill="#A2AF9B"
+        letter-spacing="0.2px">BAG</text>
+</svg>
