@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Product } from '@/data/products';
@@ -37,7 +36,6 @@ export const ProductCard = ({ product, offer, onNavigateToCart }: ProductCardPro
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
-  const navigate = useNavigate();
 
   const handleAddToCart = (e?: React.MouseEvent) => {
     e?.stopPropagation();
@@ -54,7 +52,7 @@ export const ProductCard = ({ product, offer, onNavigateToCart }: ProductCardPro
   };
 
   const handleCardClick = () => {
-    navigate(`/products/${product.id}`);
+    setIsModalOpen(true);
   };
 
   const isOnSale = !!product.originalPrice || !!offer;
@@ -130,9 +128,9 @@ export const ProductCard = ({ product, offer, onNavigateToCart }: ProductCardPro
           <div className="mb-3">
             {/* Show 3 thumbnails side-by-side with horizontal scroll (like a ruler) */}
             <div className="overflow-x-auto no-scrollbar flex gap-2 flex-nowrap scroll-smooth snap-x snap-mandatory max-w-[112px] pr-1">
-              {productColors.map((color) => (
+              {productColors.map((color, index) => (
                 <button
-                  key={color.name}
+                  key={`${color.name}-${index}`}
                   onClick={(e) => {
                     e.stopPropagation();
                     setSelectedColor(color);
@@ -169,7 +167,14 @@ export const ProductCard = ({ product, offer, onNavigateToCart }: ProductCardPro
       </div>
     </div>
 
-    {/* Modal no longer used when navigating to dedicated page */}
+    {/* Product Details Modal */}
+    <ProductDetailsModal
+      product={product}
+      isOpen={isModalOpen}
+      onClose={() => setIsModalOpen(false)}
+      offer={offer}
+      onNavigateToCart={onNavigateToCart}
+    />
   </>
   );
 };

@@ -1,6 +1,6 @@
 import { ShoppingBag, Trash2, Plus, Minus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import { CartItem } from '@/data/orders';
@@ -33,6 +33,9 @@ export const CartSidebar = ({
               <ShoppingBag className="h-5 w-5" />
               سلة التسوق
             </SheetTitle>
+            <SheetDescription>
+              سلة التسوق الخاصة بك فارغة حالياً
+            </SheetDescription>
           </SheetHeader>
 
           <div className="flex flex-col h-full mt-6">
@@ -58,8 +61,11 @@ export const CartSidebar = ({
         <SheetHeader>
           <SheetTitle className="flex items-center gap-2">
             <ShoppingBag className="h-5 w-5" />
-            سلة التسوق ({cart.length})
+            سلة التسوق ({cart.length} منتج)
           </SheetTitle>
+          <SheetDescription>
+            راجع منتجاتك وأكمل عملية الشراء
+          </SheetDescription>
         </SheetHeader>
 
         <ScrollArea className="flex-1 mt-6 -mx-6 px-6">

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -44,7 +43,6 @@ import {
 import { sendWhatsAppMessage, OrderData } from '@/services/whatsappService';
 
 export const OrdersManagement = () => {
-  const navigate = useNavigate();
   const [orders, setOrders] = useState<Order[]>([]);
   const [filteredOrders, setFilteredOrders] = useState<Order[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -478,7 +476,13 @@ export const OrdersManagement = () => {
                         <Button
                           variant="link"
                           className="p-0 h-auto text-green-700 underline"
-                          onClick={() => navigate('/admin?tab=discounts&code=' + encodeURIComponent(order.discountCode!))}
+                          onClick={() => {
+                            // Navigate to discounts tab - for single page app, we can show a toast instead
+                            toast({
+                              title: "Discount Code",
+                              description: `Code: ${order.discountCode}`,
+                            });
+                          }}
                         >
                           {order.discountCode}
                         </Button>
