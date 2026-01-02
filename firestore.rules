@@ -1,0 +1,33 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow public read access to products and categories for the storefront
+    match /products/{document} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    
+    match /categories/{document} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    
+    // Allow public read access to active offers for the storefront
+    match /offers/{document} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    
+    // Orders: allow anyone to create (place orders), only authenticated users can read/update/delete
+    match /orders/{document} {
+      allow create: if true; // public can place orders
+      allow read, update, delete: if request.auth != null;
+    }
+    
+    // Allow authenticated users to manage any other collections
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
