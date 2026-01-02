@@ -36,12 +36,20 @@
 }
 
 ::-webkit-scrollbar-thumb {
+<<<<<<< HEAD
   background: #888;
+=======
+  background: linear-gradient(to bottom, #8b5cf6, #ec4899);
+>>>>>>> fb3a6671ff068ab6f785a9697e19b6afa73000a2
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
+<<<<<<< HEAD
   background: #555;
+=======
+  background: linear-gradient(to bottom, #7c3aed, #db2777);
+>>>>>>> fb3a6671ff068ab6f785a9697e19b6afa73000a2
 }
 
 /* Smooth scroll behavior */

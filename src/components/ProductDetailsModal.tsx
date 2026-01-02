@@ -4,7 +4,11 @@ import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Product } from '@/data/products';
 import { useCart } from '@/hooks/useCart';
+<<<<<<< HEAD
 import { Minus, Plus, ShoppingCart, ChevronDown, X } from 'lucide-react';
+=======
+import { Minus, Plus, ShoppingCart, ChevronDown } from 'lucide-react';
+>>>>>>> fb3a6671ff068ab6f785a9697e19b6afa73000a2
 import { Offer } from './admin/OfferForm';
 
 interface ProductDetailsModalProps {
@@ -45,7 +49,11 @@ export const ProductDetailsModal = ({ product, offer, isOpen, onClose, onNavigat
   const isOnSale = !!product.originalPrice || !!offer;
   const originalPrice = product.originalPrice || product.price;
   const discountedPrice = offer ? product.price * (1 - offer.discount / 100) : product.price;
+<<<<<<< HEAD
   const displayPrice = offer ? discountedPrice : product.price;
+=======
+  const displayPrice = offer ? discountedPrice : (product.originalPrice || product.price);
+>>>>>>> fb3a6671ff068ab6f785a9697e19b6afa73000a2
   const discountPercentage = offer
     ? Math.round(offer.discount)
     : product.originalPrice
@@ -70,13 +78,18 @@ export const ProductDetailsModal = ({ product, offer, isOpen, onClose, onNavigat
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => { if (!open) onClose(); }}>
+<<<<<<< HEAD
       <DialogContent className="p-0 overflow-hidden w-full h-full max-w-none max-h-none rounded-none border-0 top-0 left-0 -translate-x-0 -translate-y-0" aria-describedby="product-dialog-description">
+=======
+      <DialogContent className="p-0 overflow-hidden" aria-describedby="product-dialog-description">
+>>>>>>> fb3a6671ff068ab6f785a9697e19b6afa73000a2
         <DialogHeader className="sr-only">
           <DialogTitle>{product.name}</DialogTitle>
           <DialogDescription id="product-dialog-description">
             Product details and actions for {product.name}
           </DialogDescription>
         </DialogHeader>
+<<<<<<< HEAD
         {/* Close button at top */}
         <button
           onClick={onClose}
@@ -88,6 +101,10 @@ export const ProductDetailsModal = ({ product, offer, isOpen, onClose, onNavigat
 
         {/* Vertical smooth content scroll */}
         <div className="h-full overflow-y-auto scroll-smooth">
+=======
+        {/* Vertical smooth content scroll */}
+        <div className="max-h-[85vh] overflow-y-auto scroll-smooth">
+>>>>>>> fb3a6671ff068ab6f785a9697e19b6afa73000a2
           {/* Image: show full image without cropping */}
           <div className="relative w-full overflow-hidden bg-transparent flex items-center justify-center">
             <img
@@ -185,6 +202,7 @@ export const ProductDetailsModal = ({ product, offer, isOpen, onClose, onNavigat
               {product.inStock ? 'Add to Cart' : 'Coming Soon'}
             </Button>
 
+<<<<<<< HEAD
             {/* Cancel button */}
             <Button 
               variant="outline" 
@@ -194,6 +212,8 @@ export const ProductDetailsModal = ({ product, offer, isOpen, onClose, onNavigat
               CANCEL
             </Button>
 
+=======
+>>>>>>> fb3a6671ff068ab6f785a9697e19b6afa73000a2
             {/* Labels */}
             <div className="flex items-center gap-2 pt-2">
               {!product.inStock && (

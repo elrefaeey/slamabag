@@ -22,7 +22,11 @@ export const FloatingSocialIcons = () => {
 
       <Button
         onClick={handleInstagramClick}
+<<<<<<< HEAD
         className="w-12 h-12 rounded-full bg-gray-600 hover:bg-gray-700 text-white shadow-medium hover:scale-110 transition-all duration-300"
+=======
+        className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-medium hover:scale-110 transition-all duration-300"
+>>>>>>> fb3a6671ff068ab6f785a9697e19b6afa73000a2
         title="Follow us on Instagram"
       >
         <Instagram className="h-6 w-6" />
